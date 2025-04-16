@@ -75,12 +75,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <!-- En 'sources' se define la ruta completa al XSD (o más de uno) -->
-                            <sources>
-                                <!-- Ajusta la ruta si tu XSD está en otra ubicación -->
-                                <source>${project.basedir}/src/main/resources/xsd/countries.xsd</source>
-                            </sources>
-                            <!-- Directorio de salida para las clases generadas -->
+                        <schemaDirectory>${project.basedir}/src/main/resources/xsd</schemaDirectory>
                             <generateDirectory>${project.build.directory}/generated-sources/jaxb</generateDirectory>
                             <!-- Paquete en el que se generarán las clases -->
                             <generatePackage>com.ejemplo.soap.gen</generatePackage>
