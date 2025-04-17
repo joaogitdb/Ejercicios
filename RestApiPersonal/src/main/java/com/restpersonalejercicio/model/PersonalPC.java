@@ -1,14 +1,7 @@
 package com.restpersonalejercicio.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import javax.persistence.*;
+import lombok.*;
 
 @Entity
 @Table(name="personal_pc")
@@ -35,5 +28,69 @@ public class PersonalPC {
     public void setId(Integer id) {
         this.id = id;
     }
+
+	public Integer getRamMemory() {
+		return ramMemory;
+	}
+
+	public void setRamMemory(Integer ramMemory) {
+		this.ramMemory = ramMemory;
+	}
+
+	public String getCpu() {
+		return cpu;
+	}
+
+	public void setCpu(String cpu) {
+		this.cpu = cpu;
+	}
+
+	public String getGraphicCard() {
+		return graphicCard;
+	}
+
+	public void setGraphicCard(String graphicCard) {
+		this.graphicCard = graphicCard;
+	}
+
+	public Double getCpuFreq() {
+		return cpuFreq;
+	}
+
+	public void setCpuFreq(Double cpuFreq) {
+		this.cpuFreq = cpuFreq;
+	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public Boolean getHasScreen() {
+		return hasScreen;
+	}
+
+	public void setHasScreen(Boolean hasScreen) {
+		this.hasScreen = hasScreen;
+	}
+
+	@Override
+	public String toString() {
+		return "PersonalPC [id=" + id + ", ramMemory=" + ramMemory + ", cpu=" + cpu + ", graphicCard=" + graphicCard
+				+ ", cpuFreq=" + cpuFreq + ", brand=" + brand + ", model=" + model + ", hasScreen=" + hasScreen + "]";
+	}
+    
+    
    
 }
