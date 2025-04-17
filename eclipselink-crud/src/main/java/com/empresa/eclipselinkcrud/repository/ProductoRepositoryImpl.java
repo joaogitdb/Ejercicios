@@ -6,14 +6,14 @@ import java.util.Optional;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.empresa.eclipselinkcrud.entity.Producto;
 
 @Repository
-@Transactional
+@Transactional  // import org.springframework.transaction.annotation.Transactional
 public class ProductoRepositoryImpl implements ProductoRepository {
 
     @PersistenceContext

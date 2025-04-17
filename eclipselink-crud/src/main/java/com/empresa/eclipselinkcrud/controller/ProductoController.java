@@ -34,9 +34,8 @@ public class ProductoController {
     @PostMapping
     public ResponseEntity<Producto> create(@RequestBody Producto p) {
         Producto saved = repo.save(p);
-        return ResponseEntity
-                .created(URI.create("/api/productos/" + saved.getId()))
-                .body(saved);
+        return ResponseEntity.created(URI.create("/api/productos/" + saved.getId()))
+                             .body(saved);
     }
 
     @PutMapping("/{id}")

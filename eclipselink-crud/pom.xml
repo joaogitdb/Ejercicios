@@ -16,56 +16,72 @@
   <artifactId>eclipselink-crud</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>eclipselink-crud</name>
-  <description>CRUD completo, pero en lugar de utlizar el JPA de Spring, se empleará TopLink/EclipseLink</description>
+  <description>CRUD con TopLink/EclipseLink en lugar de Hibernate JPA</description>
   
   <properties>
     <java.version>17</java.version>
   </properties>
   
-  <dependencies>
-  
-    <!-- TopLink/EclipseLink -->
+   <dependencies>
+    <!-- 1. Spring Data JPA (trae spring-orm, spring-tx, jdbc y la API JPA) -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+      <exclusions>
+        <!-- Excluimos Hibernate, que no lo vamos a usar -->
+        <exclusion>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-core</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <!-- 2. EclipseLink como proveedor JPA -->
     <dependency>
       <groupId>org.eclipse.persistence</groupId>
       <artifactId>org.eclipse.persistence.jpa</artifactId>
-      <version>2.7.0</version>
+      <version>3.0.2</version>
     </dependency>
 
-    <!-- JPA API (si no la incluye EclipseLink) -->
+    <!-- 3. Spring ORM (si algo no lo trajo el starter-data-jpa) -->
     <dependency>
-      <groupId>jakarta.persistence</groupId>
-      <artifactId>jakarta.persistence-api</artifactId>
-      <version>2.2.3</version>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
     </dependency>
 
-    <!-- Driver Oracle -->
+    <!-- 4. Spring TX para @Transactional y PlatformTransactionManager -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx</artifactId>
+    </dependency>
+
+    <!-- 5. Driver Oracle -->
     <dependency>
       <groupId>com.oracle.database.jdbc</groupId>
       <artifactId>ojdbc8</artifactId>
       <version>19.3.0.0</version>
     </dependency>
-    
-    <!-- Spring Boot Web (REST) -->
+
+    <!-- 6. REST -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
-    
-    <!-- Spring Boot Web Services (SOAP) -->
+
+    <!-- 7. SOAP -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web-services</artifactId>
     </dependency>
-    
-    <!-- Pruebas -->
+
+    <!-- 8. Tests -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
-    
   </dependencies>
-  
+
   <build>
     <plugins>
       <plugin>
